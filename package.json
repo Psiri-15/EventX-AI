@@ -1,0 +1,27 @@
+{
+  "name": "eventx-ai",
+  "version": "1.0.0",
+  "description": "EventX AI – Intelligent Event Management and Ticket Booking System (CSE Capstone Full-Stack Application)",
+  "scripts": {
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "seed": "npm --prefix backend run seed",
+    "test": "npm --prefix backend test",
+    "server": "npm --prefix backend start",
+    "server:dev": "npm --prefix backend run dev",
+    "client": "npm --prefix frontend run dev",
+    "client:build": "npm --prefix frontend run build"
+  },
+  "keywords": [
+    "event-management",
+    "mern",
+    "mongodb",
+    "express",
+    "react",
+    "vite",
+    "ai",
+    "qr-code",
+    "ticketing"
+  ],
+  "author": "CSE Final Year Project Team",
+  "license": "MIT"
+}
