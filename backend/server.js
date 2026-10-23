@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const mongoose = require('mongoose');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 const { apiLimiter } = require('./middleware/rateLimiter');
@@ -52,9 +53,16 @@ app.use('/api', apiLimiter);
 
 // Health Check
 app.get('/api/health', (req, res) => {
+  const dbStatusMap = {
+    0: 'disconnected',
+    1: 'connected',
+    2: 'connecting',
+    3: 'disconnecting',
+  };
   res.status(200).json({
     status: 'online',
     service: 'EventX AI API Server',
+    database: dbStatusMap[mongoose.connection.readyState] || 'unknown',
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
   });
